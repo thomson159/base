@@ -1,0 +1,201 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Pagination memo > matches snapshot for memoized Pagination 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col items-center gap-2"
+  >
+    <div
+      class="flex flex-wrap justify-center gap-1 overflow-hidden"
+    >
+      <button
+        class="pagination-btn "
+      >
+        1
+      </button>
+      <button
+        class="pagination-btn "
+      >
+        2
+      </button>
+      <button
+        class="pagination-btn active"
+      >
+        3
+      </button>
+      <button
+        class="pagination-btn "
+      >
+        4
+      </button>
+      <button
+        class="pagination-btn "
+      >
+        5
+      </button>
+    </div>
+    <div
+      class="flex gap-2 mt-1"
+    >
+      <button
+        class="pagination-btn"
+      >
+        Prev
+      </button>
+      <button
+        class="pagination-btn"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PaginationComponent > matches snapshot with first page 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col items-center gap-2"
+  >
+    <div
+      class="flex flex-wrap justify-center gap-1 overflow-hidden"
+    >
+      <button
+        class="pagination-btn active"
+      >
+        1
+      </button>
+      <button
+        class="pagination-btn "
+      >
+        2
+      </button>
+      <span
+        class="pagination-dots"
+      >
+        …
+      </span>
+      <button
+        class="pagination-btn "
+      >
+        5
+      </button>
+    </div>
+    <div
+      class="flex gap-2 mt-1"
+    >
+      <button
+        class="pagination-btn"
+        disabled=""
+      >
+        Prev
+      </button>
+      <button
+        class="pagination-btn"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PaginationComponent > matches snapshot with last page 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col items-center gap-2"
+  >
+    <div
+      class="flex flex-wrap justify-center gap-1 overflow-hidden"
+    >
+      <button
+        class="pagination-btn "
+      >
+        1
+      </button>
+      <span
+        class="pagination-dots"
+      >
+        …
+      </span>
+      <button
+        class="pagination-btn "
+      >
+        4
+      </button>
+      <button
+        class="pagination-btn active"
+      >
+        5
+      </button>
+    </div>
+    <div
+      class="flex gap-2 mt-1"
+    >
+      <button
+        class="pagination-btn"
+      >
+        Prev
+      </button>
+      <button
+        class="pagination-btn"
+        disabled=""
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PaginationComponent > matches snapshot with middle page 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col items-center gap-2"
+  >
+    <div
+      class="flex flex-wrap justify-center gap-1 overflow-hidden"
+    >
+      <button
+        class="pagination-btn "
+      >
+        1
+      </button>
+      <button
+        class="pagination-btn "
+      >
+        2
+      </button>
+      <button
+        class="pagination-btn active"
+      >
+        3
+      </button>
+      <button
+        class="pagination-btn "
+      >
+        4
+      </button>
+      <button
+        class="pagination-btn "
+      >
+        5
+      </button>
+    </div>
+    <div
+      class="flex gap-2 mt-1"
+    >
+      <button
+        class="pagination-btn"
+      >
+        Prev
+      </button>
+      <button
+        class="pagination-btn"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

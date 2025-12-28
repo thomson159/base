@@ -1,0 +1,77 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Filters > matches snapshot 1`] = `
+<div>
+  <div
+    class="w-full flex flex-col lg:flex-row lg:items-end justify-start gap-4"
+  >
+    <div
+      class="flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-row gap-4 w-full lg:w-auto"
+    >
+      <div
+        class="flex flex-col relative w-full lg:w-auto"
+      >
+        <label>
+          Search
+        </label>
+        <input
+          class="_input_fc79a0 w-full"
+          value="Test"
+        />
+        <button
+          aria-label="Clear name filter"
+          class="absolute right-4 top-[32px]"
+          type="button"
+        >
+          ✕
+        </button>
+      </div>
+      <div
+        class="flex flex-col w-full lg:w-auto"
+      >
+        <label>
+          Date
+        </label>
+        <div
+          class="flex flex-col sm:flex-row gap-2"
+        >
+          <input
+            class="_input_fc79a0 w-full"
+            type="date"
+            value="2024-01-01"
+          />
+          <input
+            class="_input_fc79a0 w-full"
+            type="date"
+            value="2024-01-31"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-col lg:flex-row lg:items-end gap-4 w-full lg:w-auto"
+    >
+      <div
+        class="_sortContainer_d88db4"
+      >
+        <button
+          class="_sortButton_d88db4 _sortButtonActive_d88db4"
+        >
+          Amazon
+           ✓
+        </button>
+        <button
+          class="_sortButton_d88db4 _sortButtonInActive_d88db4"
+        >
+          Ebay
+        </button>
+      </div>
+      <button
+        class="px-6 py-2 rounded-lg shadow-md _button_81a49d w-full lg:w-auto "
+      >
+        Apply
+      </button>
+    </div>
+  </div>
+</div>
+`;

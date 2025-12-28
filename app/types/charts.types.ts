@@ -1,0 +1,32 @@
+import type { Sale } from '~/types/types';
+
+export interface LineDataPoint {
+  readonly x: string;
+  readonly y: number;
+}
+
+export interface LineSeries {
+  readonly id: string;
+  readonly data: readonly LineDataPoint[];
+}
+
+export interface BarData {
+  readonly channel: string;
+  readonly [key: string]: string | number;
+}
+
+export interface DashboardChartsProps {
+  readonly salesData: readonly Sale[];
+}
+
+export interface LineTooltipPoint {
+  readonly data: {
+    readonly x: string | number;
+    readonly y: number;
+  };
+}
+
+export interface BarTooltipPropsTyped {
+  readonly value: number;
+  readonly indexValue: string | number;
+}

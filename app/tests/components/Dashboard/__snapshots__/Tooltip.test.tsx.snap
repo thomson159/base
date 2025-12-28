@@ -1,0 +1,45 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BarTooltip > matches snapshot with numeric indexValue 1`] = `
+<div>
+  <div
+    class="bg-white px-2 py-1 shadow rounded text-sm"
+  >
+    3
+    <br />
+    <strong>
+      5.00
+    </strong>
+  </div>
+</div>
+`;
+
+exports[`BarTooltip > matches snapshot with string indexValue 1`] = `
+<div>
+  <div
+    class="bg-white px-2 py-1 shadow rounded text-sm"
+  >
+    facebook_ads
+    <br />
+    <strong>
+      10.12
+    </strong>
+  </div>
+</div>
+`;
+
+exports[`LineTooltip > matches snapshot 1`] = `
+<div>
+  <div
+    class="bg-white px-2 py-1 shadow rounded text-sm"
+    style="white-space: nowrap;"
+  >
+    <div>
+      2024-01-01
+    </div>
+    <strong>
+      12.35
+    </strong>
+  </div>
+</div>
+`;

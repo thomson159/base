@@ -1,0 +1,80 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TableBody > matches snapshot for all columns 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr
+        class="transition-colors duration-150 odd"
+        style="white-space: nowrap;"
+      >
+        <td
+          class="px-3 py-2"
+        >
+          1
+        </td>
+        <td
+          class="px-3 py-2"
+        >
+          2025-01-01
+        </td>
+        <td
+          class="px-3 py-2"
+        >
+          chan1
+        </td>
+        <td
+          class="px-3 py-2"
+        >
+          1
+        </td>
+        <td
+          class="px-3 py-2"
+        >
+          100.50
+        </td>
+        <td
+          class="px-3 py-2"
+        >
+          2
+        </td>
+      </tr>
+      <tr
+        class="transition-colors duration-150 even"
+        style="white-space: nowrap;"
+      >
+        <td
+          class="px-3 py-2"
+        >
+          2
+        </td>
+        <td
+          class="px-3 py-2"
+        >
+          -
+        </td>
+        <td
+          class="px-3 py-2"
+        >
+          -
+        </td>
+        <td
+          class="px-3 py-2"
+        >
+          0
+        </td>
+        <td
+          class="px-3 py-2"
+        >
+          50.00
+        </td>
+        <td
+          class="px-3 py-2"
+        >
+          1
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

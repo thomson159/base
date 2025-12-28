@@ -1,0 +1,27 @@
+.pagination-btn {
+  min-width: 43px;
+  height: 36px;
+  padding: 0 0.75rem;
+  border-radius: 6px;
+  border: 2px solid var(--gray);
+  background: var(--white);
+  font-size: 0.9rem;
+  cursor: pointer;
+
+  &:hover:not(:disabled):not(.active) {
+    background: var(--gray);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: var(--white);
+    font-weight: 600;
+    cursor: default;
+  }
+}

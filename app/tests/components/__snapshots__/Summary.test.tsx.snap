@@ -1,0 +1,103 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SalesSummary memo > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-wrap gap-4"
+  >
+    <div
+      class="flex-1 min-w-[200px] rounded-lg panel px-6 py-2 shadow-sm flex flex-col items-center"
+    >
+      <p
+        class="text-sm"
+      >
+        Total Revenue
+      </p>
+      <div
+        class="text-xl font-semibold flex items-center justify-center h-[38px]"
+      >
+        1234.56 $
+      </div>
+    </div>
+    <div
+      class="flex-1 min-w-[200px] rounded-lg panel px-6 py-2 shadow-sm flex flex-col items-center"
+    >
+      <p
+        class="text-sm"
+      >
+        Total Orders
+      </p>
+      <div
+        class="text-xl font-semibold flex items-center justify-center h-[38px]"
+      >
+        78
+      </div>
+    </div>
+    <div
+      class="flex-1 min-w-[200px] rounded-lg panel px-6 py-2 shadow-sm flex flex-col items-center"
+    >
+      <p
+        class="text-sm"
+      >
+        Average Order Value
+      </p>
+      <div
+        class="text-xl font-semibold flex items-center justify-center h-[38px]"
+      >
+        15.87 $
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`SalesSummaryComponent > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-wrap gap-4"
+  >
+    <div
+      class="flex-1 min-w-[200px] rounded-lg panel px-6 py-2 shadow-sm flex flex-col items-center"
+    >
+      <p
+        class="text-sm"
+      >
+        Total Revenue
+      </p>
+      <div
+        class="text-xl font-semibold flex items-center justify-center h-[38px]"
+      >
+        1234.56 $
+      </div>
+    </div>
+    <div
+      class="flex-1 min-w-[200px] rounded-lg panel px-6 py-2 shadow-sm flex flex-col items-center"
+    >
+      <p
+        class="text-sm"
+      >
+        Total Orders
+      </p>
+      <div
+        class="text-xl font-semibold flex items-center justify-center h-[38px]"
+      >
+        78
+      </div>
+    </div>
+    <div
+      class="flex-1 min-w-[200px] rounded-lg panel px-6 py-2 shadow-sm flex flex-col items-center"
+    >
+      <p
+        class="text-sm"
+      >
+        Average Order Value
+      </p>
+      <div
+        class="text-xl font-semibold flex items-center justify-center h-[38px]"
+      >
+        15.87 $
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

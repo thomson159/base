@@ -1,0 +1,24 @@
+.text-gray {
+  color: var(--black);
+}
+
+.filters-wrapper {
+  overflow: hidden;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.2s ease;
+}
+
+.filters-open {
+  max-height: 600px;
+  opacity: 1;
+}
+
+.filters-closed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.navbar {
+  box-shadow: 0 4px 12px var(--shadow);
+}

@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Dashboard > matches snapshot 1`] = `
+<div>
+  <div>
+    <button>
+      toggle
+    </button>
+    <button
+      data-testid="filters"
+    />
+    <button
+      data-testid="sort"
+    />
+  </div>
+  <div
+    data-testid="container"
+  >
+    <div
+      data-testid="summary"
+    />
+    <div
+      data-testid="charts"
+    />
+    <button
+      data-testid="pagesize"
+    />
+    <button
+      data-testid="pagination"
+    />
+    <div
+      data-testid="table"
+    />
+    <div
+      data-testid="footer"
+    />
+  </div>
+</div>
+`;

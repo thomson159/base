@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ColumnSelector > matches snapshot with all columns visible 1`] = `
+<div>
+  <div
+    class="column-selector mb-2 flex flex-wrap gap-3 p-3 rounded-lg"
+  >
+    <label
+      class="column-selector__label flex items-center gap-2 text-sm font-medium flex-1 min-w-[120px] cursor-pointer select-none"
+    >
+      <input
+        checked=""
+        class="column-selector__input"
+        type="checkbox"
+      />
+      <span
+        class="column-selector__checkbox"
+      />
+      Name
+    </label>
+    <label
+      class="column-selector__label flex items-center gap-2 text-sm font-medium flex-1 min-w-[120px] cursor-pointer select-none"
+    >
+      <input
+        checked=""
+        class="column-selector__input"
+        type="checkbox"
+      />
+      <span
+        class="column-selector__checkbox"
+      />
+      Age
+    </label>
+    <label
+      class="column-selector__label flex items-center gap-2 text-sm font-medium flex-1 min-w-[120px] cursor-pointer select-none"
+    >
+      <input
+        checked=""
+        class="column-selector__input"
+        type="checkbox"
+      />
+      <span
+        class="column-selector__checkbox"
+      />
+      Email
+    </label>
+  </div>
+</div>
+`;

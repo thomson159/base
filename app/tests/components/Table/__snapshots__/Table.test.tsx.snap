@@ -1,0 +1,101 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Table > matches snapshot 1`] = `
+<div>
+  <div>
+    <div
+      class="column-selector mb-2 flex flex-wrap gap-3 p-3 rounded-lg"
+    >
+      <label
+        class="column-selector__label flex items-center gap-2 text-sm font-medium flex-1 min-w-[120px] cursor-pointer select-none"
+      >
+        <input
+          checked=""
+          class="column-selector__input"
+          type="checkbox"
+        />
+        <span
+          class="column-selector__checkbox"
+        />
+        Date
+      </label>
+      <label
+        class="column-selector__label flex items-center gap-2 text-sm font-medium flex-1 min-w-[120px] cursor-pointer select-none"
+      >
+        <input
+          checked=""
+          class="column-selector__input"
+          type="checkbox"
+        />
+        <span
+          class="column-selector__checkbox"
+        />
+        Channel
+      </label>
+    </div>
+    <div
+      class="table-wrapper overflow-x-auto w-full"
+    >
+      <table
+        class="sales-table table-fixed font-inter text-sm rounded-lg border-collapse md:w-full w-auto"
+      >
+        <thead>
+          <tr>
+            <th
+              class="cursor-pointer select-none px-3 py-2 text-left font-semibold"
+            >
+              Date
+            </th>
+            <th
+              class="cursor-pointer select-none px-3 py-2 text-left font-semibold"
+            >
+              Channel
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="transition-colors duration-150 odd"
+            style="white-space: nowrap;"
+          >
+            <td
+              class="px-3 py-2"
+            >
+              2025-01-01
+            </td>
+            <td
+              class="px-3 py-2"
+            >
+              chan1
+            </td>
+          </tr>
+          <tr
+            class="transition-colors duration-150 even"
+            style="white-space: nowrap;"
+          >
+            <td
+              class="px-3 py-2"
+            >
+              2025-01-02
+            </td>
+            <td
+              class="px-3 py-2"
+            >
+              chan2
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="flex pt-5"
+    >
+      <button
+        class="px-6 py-2 rounded-lg shadow-md _button_81a49d mx-auto"
+      >
+        More
+      </button>
+    </div>
+  </div>
+</div>
+`;

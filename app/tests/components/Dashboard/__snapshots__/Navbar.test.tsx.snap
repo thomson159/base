@@ -1,0 +1,89 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navbar > matches snapshot when collapsed 1`] = `
+<div>
+  <div
+    class="navbar sticky top-0 z-50 bg-white"
+  >
+    <div
+      class="p-4 cursor-pointer select-none relative"
+    >
+      <h2
+        class="text-3xl font-bold text-left"
+      >
+        Sales Dashboard
+      </h2>
+      <span
+        aria-hidden="true"
+        class="absolute left-1/2 -translate-x-1/2 bottom-1 text-sm select-none"
+      >
+        ▼
+      </span>
+    </div>
+    <div
+      class="filters-wrapper filters-closed"
+    >
+      <div
+        class="p-4 pt-0 pb-2"
+      >
+        Child
+        <div
+          class="flex justify-center"
+        >
+          <button
+            class="text-sm flex items-center gap-1 cursor-pointer mt-4"
+            type="button"
+          >
+            <span
+              aria-hidden="true"
+            >
+              ▲
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Navbar > matches snapshot when expanded 1`] = `
+<div>
+  <div
+    class="navbar sticky top-0 z-50 bg-white"
+  >
+    <div
+      class="p-4 cursor-pointer select-none relative"
+    >
+      <h2
+        class="text-3xl font-bold text-left"
+      >
+        Sales Dashboard
+      </h2>
+    </div>
+    <div
+      class="filters-wrapper filters-open"
+    >
+      <div
+        class="p-4 pt-0 pb-2"
+      >
+        Child
+        <div
+          class="flex justify-center"
+        >
+          <button
+            class="text-sm flex items-center gap-1 cursor-pointer mt-4"
+            type="button"
+          >
+            <span
+              aria-hidden="true"
+            >
+              ▲
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

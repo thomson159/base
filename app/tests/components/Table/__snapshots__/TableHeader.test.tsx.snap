@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TableHeader > matches snapshot 1`] = `
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th
+          class="select-none px-3 py-2 text-left font-semibold"
+        >
+          Index
+        </th>
+        <th
+          class="cursor-pointer select-none px-3 py-2 text-left font-semibold"
+        >
+          Date
+           ▲
+        </th>
+        <th
+          class="cursor-pointer select-none px-3 py-2 text-left font-semibold"
+        >
+          Channel
+        </th>
+        <th
+          class="cursor-pointer select-none px-3 py-2 text-left font-semibold"
+        >
+          Sales
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>
+`;
