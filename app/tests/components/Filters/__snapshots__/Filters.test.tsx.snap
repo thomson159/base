@@ -33,18 +33,41 @@ exports[`Filters > matches snapshot 1`] = `
           Date
         </label>
         <div
-          class="flex flex-col sm:flex-row gap-2"
+          class="flex flex-col sm:flex-row"
         >
-          <input
-            class="_input_fc79a0 w-full"
-            type="date"
-            value="2024-01-01"
-          />
-          <input
-            class="_input_fc79a0 w-full"
-            type="date"
-            value="2024-01-31"
-          />
+          <div
+            class="react-datepicker-wrapper"
+          >
+            <div
+              class="react-datepicker__input-container"
+            >
+              <input
+                class="_input_fc79a0 w-full max-w-[112px]"
+                placeholder="dd/mm/yyyy"
+                type="text"
+                value="01/01/2024"
+              />
+            </div>
+          </div>
+          <div
+            class="pt-2"
+          >
+            -
+          </div>
+          <div
+            class="react-datepicker-wrapper"
+          >
+            <div
+              class="react-datepicker__input-container"
+            >
+              <input
+                class="_input_fc79a0 w-full max-w-[112px]"
+                placeholder="dd/mm/yyyy"
+                type="text"
+                value="31/01/2024"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

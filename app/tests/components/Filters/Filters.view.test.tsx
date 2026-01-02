@@ -83,16 +83,14 @@ describe('FiltersView', () => {
   it('dispatches date changes correctly', () => {
     const { dispatch } = setup();
 
-    const dateInputs = screen
-      .getAllByDisplayValue('')
-      .filter((el) => el.getAttribute('type') === 'date');
+    const dateInputs = screen.getAllByPlaceholderText('dd/mm/yyyy');
 
     fireEvent.change(dateInputs[0], {
-      target: { value: '2024-01-01' },
+      target: { value: '01/01/2024' },
     });
 
     fireEvent.change(dateInputs[1], {
-      target: { value: '2024-01-31' },
+      target: { value: '31/01/2024' },
     });
 
     expect(dispatch).toHaveBeenCalledWith({

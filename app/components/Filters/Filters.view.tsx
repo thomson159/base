@@ -2,6 +2,8 @@ import styles from './Filters.module.scss';
 import stylesSort from '../Sort/Sort.module.scss';
 import { Button } from '../Button/Button';
 import type { FiltersViewProps } from '~/types/components.types';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export const FiltersView = ({
   state,
@@ -12,14 +14,6 @@ export const FiltersView = ({
 }: FiltersViewProps) => (
   <div className="w-full flex flex-col lg:flex-row lg:items-end justify-start gap-4">
     <div className="flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-row gap-4 w-full lg:w-auto">
-      {/* <div className="flex flex-col w-full lg:w-auto">
-        <label>Channel</label>
-        <input
-          disabled
-          value="Marketplace"
-          className={`${styles.input} w-full`}
-        />
-      </div> */}
       <div className="flex flex-col relative w-full lg:w-auto">
         <label>Search</label>
         <input
@@ -45,18 +39,33 @@ export const FiltersView = ({
       </div>
       <div className="flex flex-col w-full lg:w-auto">
         <label>Date</label>
-        <div className="flex flex-col sm:flex-row gap-2">
-          <input
-            type="date"
-            value={state.minDate}
-            onChange={(e) => dispatch({ type: 'SET_MIN_DATE', value: e.target.value })}
-            className={`${styles.input} w-full`}
+        <div className="flex flex-col sm:flex-row">
+          <DatePicker
+            selected={state.minDate ? new Date(state.minDate) : null}
+            onChange={(date: Date | null) =>
+              dispatch({
+                type: 'SET_MIN_DATE',
+                value: date ? date.toLocaleDateString('en-CA') : '',
+              })
+            }
+            dateFormat="dd/MM/yyyy"
+            placeholderText="dd/mm/yyyy"
+            className={`${styles.input} w-full max-w-[112px]`}
           />
-          <input
-            type="date"
-            value={state.maxDate}
-            onChange={(e) => dispatch({ type: 'SET_MAX_DATE', value: e.target.value })}
-            className={`${styles.input} w-full`}
+          <div className='pt-2'>
+            -
+          </div>
+          <DatePicker
+            selected={state.maxDate ? new Date(state.maxDate) : null}
+            onChange={(date: Date | null) =>
+              dispatch({
+                type: 'SET_MAX_DATE',
+                value: date ? date.toLocaleDateString('en-CA') : '',
+              })
+            }
+            dateFormat="dd/MM/yyyy"
+            placeholderText="dd/mm/yyyy"
+            className={`${styles.input} w-full max-w-[112px]`}
           />
         </div>
       </div>
@@ -70,9 +79,8 @@ export const FiltersView = ({
             <button
               key={name}
               onClick={() => dispatch({ type: 'TOGGLE_CHANNEL', value: name })}
-              className={`${stylesSort.sortButton} ${
-                active ? stylesSort.sortButtonActive : stylesSort.sortButtonInActive
-              }`}
+              className={`${stylesSort.sortButton} ${active ? stylesSort.sortButtonActive : stylesSort.sortButtonInActive
+                }`}
             >
               {name}
               {active && ' ✓'}
@@ -80,7 +88,6 @@ export const FiltersView = ({
           );
         })}
       </div>
-
       <Button
         disabled={!hasChanges}
         onClick={apply}
