@@ -1,12 +1,14 @@
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
 import { COLORS } from "~/consts";
+import { useIsMobile } from "~/hooks/useIsMobile";
 
 type Props = {
   data: { channel: string; revenue: number }[];
-  isMobile: boolean;
 };
 
-export const RevenuePerChannelChart = ({ data, isMobile }: Props) => {
+export const RevenuePerChannelChart = ({ data }: Props) => {
+  const isMobile = useIsMobile();
+
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={data}>

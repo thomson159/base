@@ -1,7 +1,7 @@
 import { memo, useMemo, useState } from 'react';
 import { ResponsiveLine } from '@nivo/line';
 import { ResponsiveBar } from '@nivo/bar';
-import { useIsMobile } from '~/hooks/useIsMobile';
+import { useIsMobile, useIsMobileCharts } from '~/hooks/useIsMobile';
 import type { BarOption, LineOption } from '~/types/types';
 import type { BarData, DashboardChartsProps, LineSeries } from '../../types/charts.types';
 import { BLUE, BAR_OPTIONS, LINE_OPTIONS, BAR_COMMON_PROPS, LINE_COMMON_PROPS } from '~/consts';
@@ -14,7 +14,7 @@ import {
 } from '~/utils/charts.utils';
 
 const ChartsComponent = ({ salesData }: DashboardChartsProps) => {
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobileCharts();
   const [lineOption, setLineOption] = useState<LineOption>(LINE_OPTIONS[0]);
   const [barOption, setBarOption] = useState<BarOption>(BAR_OPTIONS[0]);
 

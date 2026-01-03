@@ -31,10 +31,9 @@ const PageSizeFilterComponent = ({
             value={localPageSize}
             onChange={handleChange}
             className={styles.input}
-            style={{ width: 80 }}
           />
         </div>
-        <Button onClick={applyPageSize} style={{ maxWidth: 94 }}>
+        <Button onClick={applyPageSize}>
           Apply
         </Button>
       </div>

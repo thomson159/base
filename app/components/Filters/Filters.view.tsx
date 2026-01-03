@@ -12,9 +12,9 @@ export const FiltersView = ({
   apply,
   dispatch,
 }: FiltersViewProps) => (
-  <div className="w-full flex flex-col lg:flex-row lg:items-end justify-start gap-4">
-    <div className="flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-row gap-4 w-full lg:w-auto">
-      <div className="flex flex-col relative w-full lg:w-auto">
+  <div className="w-full flex flex-col md:flex-row md:items-end gap-4 flex-wrap">
+    <div className="flex flex-wrap gap-4 w-full md:w-auto">
+      <div className="flex flex-col relative w-full md:w-auto">
         <label>Search</label>
         <input
           value={state.channelName}
@@ -37,9 +37,9 @@ export const FiltersView = ({
           </button>
         )}
       </div>
-      <div className="flex flex-col w-full lg:w-auto">
+      <div className="flex flex-col w-full md:w-auto">
         <label>Date</label>
-        <div className="flex flex-col sm:flex-row">
+        <div className="flex gap-1 flex-wrap">
           <DatePicker
             selected={state.minDate ? new Date(state.minDate) : null}
             onChange={(date: Date | null) =>
@@ -52,7 +52,7 @@ export const FiltersView = ({
             placeholderText="dd/mm/yyyy"
             className={`${styles.input} w-full max-w-[112px]`}
           />
-          <div className="pt-2 pl-1 pr-1">{'-'}</div>
+          <span className="pt-2">-</span>
           <DatePicker
             selected={state.maxDate ? new Date(state.maxDate) : null}
             onChange={(date: Date | null) =>
@@ -68,18 +68,18 @@ export const FiltersView = ({
         </div>
       </div>
     </div>
-    <div className="flex flex-col lg:flex-row lg:items-end gap-4 w-full lg:w-auto">
-      <div className={stylesSort.sortContainer}>
+    <div className="flex flex-wrap gap-4 w-full md:w-auto items-end">
+      <div className={`${stylesSort.sortContainer} flex flex-wrap gap-2`}>
         {availableChannels.map((name) => {
           const active = state.channelNames.includes(name);
-
           return (
             <button
               key={name}
               onClick={() => dispatch({ type: 'TOGGLE_CHANNEL', value: name })}
-              className={`${stylesSort.sortButton} ${
-                active ? stylesSort.sortButtonActive : stylesSort.sortButtonInActive
-              }`}
+              className={`${stylesSort.sortButton} ${active
+                ? stylesSort.sortButtonActive
+                : stylesSort.sortButtonInActive
+                }`}
             >
               {name}
               {active && ' ✓'}
@@ -90,7 +90,7 @@ export const FiltersView = ({
       <Button
         disabled={!hasChanges}
         onClick={apply}
-        className={`w-full lg:w-auto ${hasChanges ? '' : 'opacity-40'}`}
+        className={`w-full md:w-auto ${hasChanges ? '' : 'opacity-40'}`}
       >
         Apply
       </Button>
