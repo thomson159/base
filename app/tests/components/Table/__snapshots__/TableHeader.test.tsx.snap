@@ -6,23 +6,23 @@ exports[`TableHeader > matches snapshot 1`] = `
     <thead>
       <tr>
         <th
-          class="select-none px-3 py-2 text-left font-semibold"
+          class=" px-3 py-2 text-left font-semibold select-none"
         >
           Index
         </th>
         <th
-          class="cursor-pointer select-none px-3 py-2 text-left font-semibold"
+          class="cursor-pointer px-3 py-2 text-left font-semibold select-none"
         >
           Date
            ▲
         </th>
         <th
-          class="cursor-pointer select-none px-3 py-2 text-left font-semibold"
+          class="cursor-pointer px-3 py-2 text-left font-semibold select-none"
         >
           Channel
         </th>
         <th
-          class="cursor-pointer select-none px-3 py-2 text-left font-semibold"
+          class="cursor-pointer px-3 py-2 text-left font-semibold select-none"
         >
           Sales
         </th>

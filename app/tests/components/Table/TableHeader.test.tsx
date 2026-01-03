@@ -97,7 +97,8 @@ describe('TableHeader', () => {
 
   it('calls onSort with correct order on first, second, and third clicks', () => {
     const onSortMock = vi.fn();
-    render(
+
+    const { rerender } = render(
       <table>
         <TableHeader
           columns={columns}
@@ -106,16 +107,44 @@ describe('TableHeader', () => {
           sortOrder={asc}
           onSort={onSortMock}
         />
-      </table>,
+      </table>
     );
-    const dateHeader = screen.getByText((content) => content.includes('Date')).closest('th');
+
+    const dateHeader = screen
+      .getByText((content) => content.includes('Date'))
+      .closest('th');
+
     if (!dateHeader) throw new Error('Date header not found');
 
     fireEvent.click(dateHeader);
-    expect(onSortMock).toHaveBeenLastCalledWith('date', asc as SortOrder);
+    expect(onSortMock).toHaveBeenLastCalledWith('date', asc);
+
+    rerender(
+      <table>
+        <TableHeader
+          columns={columns}
+          visibleColumns={visibleColumns}
+          sortKey="date"
+          sortOrder={asc}
+          onSort={onSortMock}
+        />
+      </table>
+    );
 
     fireEvent.click(dateHeader);
-    expect(onSortMock).toHaveBeenLastCalledWith('date', desc as SortOrder);
+    expect(onSortMock).toHaveBeenLastCalledWith('date', desc);
+
+    rerender(
+      <table>
+        <TableHeader
+          columns={columns}
+          visibleColumns={visibleColumns}
+          sortKey="date"
+          sortOrder={desc}
+          onSort={onSortMock}
+        />
+      </table>
+    );
 
     fireEvent.click(dateHeader);
     expect(onSortMock).toHaveBeenLastCalledWith(null);
