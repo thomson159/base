@@ -15,17 +15,20 @@ export const useTableSorting = (
     [data, sortKey, sortOrder, visibleColumns],
   );
 
-  const onSort = useCallback((key: SortKey) => {
-    if (sortKey !== key) {
-      setSortKey(key);
-      setSortOrder(asc);
-    } else if (sortOrder === asc) {
-      setSortOrder(desc);
-    } else if (sortOrder === desc) {
-      setSortKey(null);
-      setSortOrder(asc);
-    }
-  }, [sortKey, sortOrder]);
+  const onSort = useCallback(
+    (key: SortKey) => {
+      if (sortKey !== key) {
+        setSortKey(key);
+        setSortOrder(asc);
+      } else if (sortOrder === asc) {
+        setSortOrder(desc);
+      } else if (sortOrder === desc) {
+        setSortKey(null);
+        setSortOrder(asc);
+      }
+    },
+    [sortKey, sortOrder],
+  );
 
   return {
     sortKey,

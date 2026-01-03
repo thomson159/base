@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { useIsMobile } from '~/hooks/useIsMobile';
+import { useIsMobileCharts } from '~/hooks/useIsMobile';
 
 describe('useIsMobile', () => {
   const originalMatchMedia = window.matchMedia;
@@ -24,13 +24,13 @@ describe('useIsMobile', () => {
 
   it('returns true if window width <= 768px', () => {
     window.matchMedia = mockMatchMedia(true);
-    const { result } = renderHook(() => useIsMobile());
+    const { result } = renderHook(() => useIsMobileCharts());
     expect(result.current).toBe(true);
   });
 
   it('returns false if window width > 768px', () => {
     window.matchMedia = mockMatchMedia(false);
-    const { result } = renderHook(() => useIsMobile());
+    const { result } = renderHook(() => useIsMobileCharts());
     expect(result.current).toBe(false);
   });
 });

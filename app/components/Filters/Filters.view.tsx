@@ -39,7 +39,7 @@ export const FiltersView = ({
       </div>
       <div className="flex flex-col w-full md:w-auto">
         <label>Date</label>
-        <div className="flex gap-1 flex-wrap">
+        <div className="flex flex-wrap">
           <DatePicker
             selected={state.minDate ? new Date(state.minDate) : null}
             onChange={(date: Date | null) =>
@@ -76,9 +76,7 @@ export const FiltersView = ({
             <button
               key={name}
               onClick={() => dispatch({ type: 'TOGGLE_CHANNEL', value: name })}
-              className={`${stylesSort.sortButton} ${active
-                ? stylesSort.sortButtonActive
-                : stylesSort.sortButtonInActive
+              className={`${stylesSort.sortButton} ${active ? stylesSort.sortButtonActive : stylesSort.sortButtonInActive
                 }`}
             >
               {name}

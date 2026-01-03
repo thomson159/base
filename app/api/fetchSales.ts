@@ -32,7 +32,7 @@ export const fetchSales = async (): Promise<SaleArray> => {
       return [];
     }
 
-    return parsed.data.map(({ channel_type, ...sale }) => saleSchema.parse(sale));
+    return parsed.data.map(({ ...sale }) => saleSchema.parse(sale));
   } catch (error) {
     console.error('Fetch failed', error);
     return [];

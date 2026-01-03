@@ -4,7 +4,7 @@ import type { TableBodyProps } from '~/types/components.types';
 import type { ColumnKey } from '~/types/types';
 import { normalizeChannelName } from '~/utils/utils';
 
-export const TableBody = memo(({ data, visibleColumns }: TableBodyProps) => {
+const TableBodyComponent = ({ data, visibleColumns }: TableBodyProps) => {
   const visibleSet: Set<ColumnKey> = useMemo(() => new Set(visibleColumns), [visibleColumns]);
 
   return (
@@ -29,4 +29,6 @@ export const TableBody = memo(({ data, visibleColumns }: TableBodyProps) => {
       ))}
     </tbody>
   );
-});
+};
+
+export const TableBody = memo(TableBodyComponent);

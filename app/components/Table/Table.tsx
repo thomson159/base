@@ -13,23 +13,41 @@ import './Table.scss';
 
 const SalesTableComponent = ({ data }: SalesTableProps) => {
   const { visibleColumns, toggleColumn }: UseTableColumnsResult = useTableColumns();
-  const { sortKey, sortOrder, sortedData, onSort }: UseTableSortingResult = useTableSorting(data, visibleColumns);
+  const { sortKey, sortOrder, sortedData, onSort }: UseTableSortingResult = useTableSorting(
+    data,
+    visibleColumns,
+  );
   const [visibleRowsCount, setVisibleRowsCount] = useState<number>(ROWS_INCREMENT);
-  const displayedData: SaleArray = useMemo(() => sortedData.slice(0, visibleRowsCount), [sortedData, visibleRowsCount]);
-  const loadMore = useCallback(() => setVisibleRowsCount(prev => prev + ROWS_INCREMENT), []);
+  const displayedData: SaleArray = useMemo(
+    () => sortedData.slice(0, visibleRowsCount),
+    [sortedData, visibleRowsCount],
+  );
+  const loadMore = useCallback(() => setVisibleRowsCount((prev) => prev + ROWS_INCREMENT), []);
 
   return (
     <div>
-      <ColumnSelector columns={COLUMNS} visibleColumns={visibleColumns} toggleColumn={toggleColumn} />
+      <ColumnSelector
+        columns={COLUMNS}
+        visibleColumns={visibleColumns}
+        toggleColumn={toggleColumn}
+      />
       <div className="table-wrapper overflow-x-auto w-full">
         <table className="sales-table table-fixed font-inter text-sm rounded-lg border-collapse md:w-full w-auto">
-          <TableHeader columns={COLUMNS} visibleColumns={visibleColumns} sortKey={sortKey} sortOrder={sortOrder} onSort={onSort} />
+          <TableHeader
+            columns={COLUMNS}
+            visibleColumns={visibleColumns}
+            sortKey={sortKey}
+            sortOrder={sortOrder}
+            onSort={onSort}
+          />
           <TableBody data={displayedData} visibleColumns={visibleColumns} />
         </table>
       </div>
       {visibleRowsCount < sortedData.length && (
         <div className="flex pt-5">
-          <Button className="mx-auto" onClick={loadMore}>More</Button>
+          <Button className="mx-auto" onClick={loadMore}>
+            More
+          </Button>
         </div>
       )}
     </div>

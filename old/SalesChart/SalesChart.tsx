@@ -3,7 +3,6 @@ import type { SaleArray } from "~/types/types";
 import { SalesOverTimeChart } from "./SalesOverTimeChart";
 import { RevenuePerChannelChart } from "./RevenuePerChannelChart";
 import { ChannelLegend } from "./ChannelLegend";
-import { useIsMobile } from "~/hooks/useIsMobile";
 import { getRevenuePerChannel, getSalesOverTime } from "old/salesChart.utils";
 
 type Props = {

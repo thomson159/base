@@ -97,7 +97,7 @@ describe('TableHeader', () => {
 
   it('calls onSort correctly on successive clicks', () => {
     const onSortMock = vi.fn();
-    const visibleColumns = COLUMNS.map(c => c.key);
+    const visibleColumns = COLUMNS.map((c) => c.key);
     const { getByText, rerender } = render(
       <table>
         <TableHeader
@@ -107,7 +107,7 @@ describe('TableHeader', () => {
           sortOrder="asc"
           onSort={onSortMock}
         />
-      </table>
+      </table>,
     );
 
     const dateHeader = getByText('Date');
@@ -124,7 +124,7 @@ describe('TableHeader', () => {
           sortOrder="asc"
           onSort={onSortMock}
         />
-      </table>
+      </table>,
     );
     fireEvent.click(dateHeader);
     expect(onSortMock).toHaveBeenLastCalledWith('date');
@@ -138,7 +138,7 @@ describe('TableHeader', () => {
           sortOrder="desc"
           onSort={onSortMock}
         />
-      </table>
+      </table>,
     );
     fireEvent.click(dateHeader);
     expect(onSortMock).toHaveBeenLastCalledWith('date');

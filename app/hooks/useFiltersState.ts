@@ -1,4 +1,4 @@
-import { useReducer, useRef, useCallback } from 'react';
+import { useReducer, useState, useCallback } from 'react';
 import { reducer, toFiltersValue, computeHasChanges } from '~/components/Filters/Filters.state';
 import type { FiltersProps } from '~/types/components.types';
 import type { UseFiltersStateResult } from '~/types/hooks.types';
@@ -18,13 +18,13 @@ export const useFiltersState = ({
     channelNames: channelNames ?? [],
   });
 
-  const lastAppliedRef = useRef<Filters>(toFiltersValue(state));
-  const hasChanges: boolean = computeHasChanges(state, lastAppliedRef.current);
+  const [lastApplied, setLastApplied] = useState<Filters>(toFiltersValue(state));
+  const hasChanges = computeHasChanges(state, lastApplied);
 
   const apply = useCallback(() => {
     const value: Filters = toFiltersValue(state);
     onChange(value);
-    lastAppliedRef.current = value;
+    setLastApplied(value);
   }, [state, onChange]);
 
   return {

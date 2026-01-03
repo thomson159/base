@@ -33,9 +33,7 @@ const PageSizeFilterComponent = ({
             className={styles.input}
           />
         </div>
-        <Button onClick={applyPageSize}>
-          Apply
-        </Button>
+        <Button onClick={applyPageSize}>Apply</Button>
       </div>
     </div>
   );

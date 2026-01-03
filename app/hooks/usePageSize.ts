@@ -9,7 +9,10 @@ export const usePageSize = ({
   onPageSizeChange,
 }: UsePageSizeParams): UsePageSizeResult => {
   const [localPageSize, setLocalPageSize] = useState<number>(pageSize);
-  useEffect(() => setLocalPageSize(pageSize), [pageSize]);
+
+  useEffect(() => {
+    setLocalPageSize(pageSize);
+  }, [pageSize]);
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const parsed: number | null = sanitizePageSizeInput(e.target.value);

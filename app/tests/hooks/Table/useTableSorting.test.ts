@@ -37,7 +37,7 @@ describe('useTableSorting', () => {
     act(() => result.current.onSort(key));
     expect(result.current.sortKey).toBe(key);
     expect(result.current.sortOrder).toBe(asc);
-    expect(result.current.sortedData.map(d => d.sum_sales)).toEqual([30, 40, 50]);
+    expect(result.current.sortedData.map((d) => d.sum_sales)).toEqual([30, 40, 50]);
   });
 
   it('toggles sortOrder when same key is clicked again', () => {
@@ -46,7 +46,7 @@ describe('useTableSorting', () => {
     act(() => result.current.onSort(key));
     act(() => result.current.onSort(key));
     expect(result.current.sortOrder).toBe(desc);
-    expect(result.current.sortedData.map(d => d.sum_sales)).toEqual([50, 40, 30]);
+    expect(result.current.sortedData.map((d) => d.sum_sales)).toEqual([50, 40, 30]);
   });
 
   it('toggles sort order and resets on third click', () => {
@@ -56,12 +56,12 @@ describe('useTableSorting', () => {
     act(() => result.current.onSort(key));
     expect(result.current.sortKey).toBe(key);
     expect(result.current.sortOrder).toBe('asc');
-    expect(result.current.sortedData).toEqual([...data].sort((a,b) => a.sum_sales - b.sum_sales));
+    expect(result.current.sortedData).toEqual([...data].sort((a, b) => a.sum_sales - b.sum_sales));
 
     act(() => result.current.onSort(key));
     expect(result.current.sortKey).toBe(key);
     expect(result.current.sortOrder).toBe('desc');
-    expect(result.current.sortedData).toEqual([...data].sort((a,b) => b.sum_sales - a.sum_sales));
+    expect(result.current.sortedData).toEqual([...data].sort((a, b) => b.sum_sales - a.sum_sales));
 
     act(() => result.current.onSort(key));
     expect(result.current.sortKey).toBeNull();
