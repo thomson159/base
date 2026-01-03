@@ -33,7 +33,7 @@ exports[`FiltersView > matches snapshot 1`] = `
           Date
         </label>
         <div
-          class="flex gap-1 flex-wrap"
+          class="flex flex-wrap"
         >
           <div
             class="react-datepicker-wrapper"
