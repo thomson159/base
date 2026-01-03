@@ -4,15 +4,19 @@ import type { SaleArray } from '~/types/types';
 import { ColumnSelector } from './ColumnSelector';
 import { Button } from '../Button/Button';
 import { COLUMNS, ROWS_INCREMENT } from '~/consts';
-import { useTableColumns } from '~/hooks/Table/useTableColumns';
 import { useTableSorting } from '~/hooks/Table/useTableSorting';
 import type { SalesTableProps } from '~/types/components.types';
 import { TableBody } from './TableBody';
 import { TableHeader } from './TableHeader';
+import type { UseTableColumnsResult, UseTableSortingResult } from '~/types/hooks.types';
+import { useTableColumns } from '~/hooks/Table/useTableColumns';
 
 const SalesTableComponent = ({ data }: SalesTableProps) => {
-  const { visibleColumns, toggleColumn } = useTableColumns();
-  const { sortKey, sortOrder, sortedData, onSort } = useTableSorting(data, visibleColumns);
+  const { visibleColumns, toggleColumn }: UseTableColumnsResult = useTableColumns();
+  const { sortKey, sortOrder, sortedData, onSort }: UseTableSortingResult = useTableSorting(
+    data,
+    visibleColumns,
+  );
   const [visibleRowsCount, setVisibleRowsCount] = useState<number>(ROWS_INCREMENT);
 
   const displayedData = useMemo<SaleArray>(
@@ -20,9 +24,10 @@ const SalesTableComponent = ({ data }: SalesTableProps) => {
     [sortedData, visibleRowsCount],
   );
 
-  const loadMore = useCallback((): void => {
-    setVisibleRowsCount((prev: number) => prev + ROWS_INCREMENT);
-  }, []);
+  const loadMore = useCallback(
+    () => setVisibleRowsCount((prev: number) => prev + ROWS_INCREMENT),
+    [],
+  );
 
   return (
     <div>

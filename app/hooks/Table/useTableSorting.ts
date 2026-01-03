@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import type { SortKey, SortOrder, ColumnKey, SaleArray } from '~/types/types';
 import { asc, desc } from '~/consts';
 import { sortTableData } from '~/utils/table.utils';
@@ -16,14 +16,17 @@ export const useTableSorting = (
     [data, sortKey, sortOrder, visibleColumns],
   );
 
-  const onSort = (key: SortKey): void => {
-    if (sortKey === key) {
-      setSortOrder((prev: SortOrder) => (prev === asc ? desc : asc));
-    } else {
-      setSortKey(key);
+  const onSort = useCallback((key: SortKey): void => {
+    setSortKey((prevKey) => {
+      if (prevKey === key) {
+        setSortOrder((prev) => (prev === asc ? desc : asc));
+        return prevKey;
+      }
+
       setSortOrder(asc);
-    }
-  };
+      return key;
+    });
+  }, []);
 
   return {
     sortKey,

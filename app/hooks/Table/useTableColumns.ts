@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import type { ColumnKey } from '~/types/types';
 import { COLUMNS, STORAGE_KEY } from '~/consts';
 import type { UseTableColumnsResult } from '~/types/hooks.types';
@@ -6,23 +6,22 @@ import type { UseTableColumnsResult } from '~/types/hooks.types';
 export const useTableColumns = (): UseTableColumnsResult => {
   const [visibleColumns, setVisibleColumns] = useState<ColumnKey[]>(() => {
     try {
-      const stored: string | null = localStorage.getItem(STORAGE_KEY);
-
-      return stored ? (JSON.parse(stored) as ColumnKey[]) : COLUMNS.map((c): ColumnKey => c.key);
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return stored ? (JSON.parse(stored) as ColumnKey[]) : COLUMNS.map((c) => c.key);
     } catch {
-      return COLUMNS.map((c): ColumnKey => c.key);
+      return COLUMNS.map((c) => c.key);
     }
   });
 
-  useEffect(
-    () => localStorage.setItem(STORAGE_KEY, JSON.stringify(visibleColumns)),
-    [visibleColumns],
-  );
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(visibleColumns));
+  }, [visibleColumns]);
 
-  const toggleColumn = (key: ColumnKey): void =>
-    setVisibleColumns((prev: ColumnKey[]) =>
-      prev.includes(key) ? prev.filter((k: ColumnKey) => k !== key) : [...prev, key],
+  const toggleColumn = useCallback((key: ColumnKey): void => {
+    setVisibleColumns((prev) =>
+      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key],
     );
+  }, []);
 
   return {
     visibleColumns,
