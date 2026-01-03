@@ -11,27 +11,9 @@ describe('useTableSorting', () => {
 
   beforeEach(() => {
     data = [
-      {
-        date: '2025-01-01',
-        channel_name: 'A',
-        order_status_id: 1,
-        sum_sales: 50,
-        count_orders: 5,
-      },
-      {
-        date: '2025-01-02',
-        channel_name: 'B',
-        order_status_id: 2,
-        sum_sales: 30,
-        count_orders: 3,
-      },
-      {
-        date: '2025-01-03',
-        channel_name: 'C',
-        order_status_id: 1,
-        sum_sales: 40,
-        count_orders: 4,
-      },
+      { date: '2025-01-01', channel_name: 'A', order_status_id: 1, sum_sales: 50, count_orders: 5 },
+      { date: '2025-01-02', channel_name: 'B', order_status_id: 2, sum_sales: 30, count_orders: 3 },
+      { date: '2025-01-03', channel_name: 'C', order_status_id: 1, sum_sales: 40, count_orders: 4 },
     ];
     visibleColumns = ['date', 'channel_name', 'order_status_id', 'sum_sales', 'count_orders'];
   });
@@ -55,23 +37,43 @@ describe('useTableSorting', () => {
     act(() => result.current.onSort(key));
     expect(result.current.sortKey).toBe(key);
     expect(result.current.sortOrder).toBe(asc);
+    expect(result.current.sortedData.map(d => d.sum_sales)).toEqual([30, 40, 50]);
   });
 
   it('toggles sortOrder when same key is clicked again', () => {
     const { result } = renderHook(() => useTableSorting(data, visibleColumns));
     const key: SortKey = 'sum_sales';
     act(() => result.current.onSort(key));
-    expect(result.current.sortOrder).toBe(asc);
     act(() => result.current.onSort(key));
     expect(result.current.sortOrder).toBe(desc);
-    act(() => result.current.onSort(key));
-    expect(result.current.sortOrder).toBe(asc);
+    expect(result.current.sortedData.map(d => d.sum_sales)).toEqual([50, 40, 30]);
   });
 
-  it('resets sortOrder to asc when a new key is selected', () => {
+  it('toggles sort order and resets on third click', () => {
+    const { result } = renderHook(() => useTableSorting(data, visibleColumns));
+    const key: SortKey = 'sum_sales';
+
+    act(() => result.current.onSort(key));
+    expect(result.current.sortKey).toBe(key);
+    expect(result.current.sortOrder).toBe('asc');
+    expect(result.current.sortedData).toEqual([...data].sort((a,b) => a.sum_sales - b.sum_sales));
+
+    act(() => result.current.onSort(key));
+    expect(result.current.sortKey).toBe(key);
+    expect(result.current.sortOrder).toBe('desc');
+    expect(result.current.sortedData).toEqual([...data].sort((a,b) => b.sum_sales - a.sum_sales));
+
+    act(() => result.current.onSort(key));
+    expect(result.current.sortKey).toBeNull();
+    expect(result.current.sortOrder).toBe('asc');
+    expect(result.current.sortedData).toEqual(data);
+  });
+
+  it('resets sortOrder to asc when new key is selected', () => {
     const { result } = renderHook(() => useTableSorting(data, visibleColumns));
     const key1: SortKey = 'sum_sales';
     const key2: SortKey = 'count_orders';
+    act(() => result.current.onSort(key1));
     act(() => result.current.onSort(key1));
     act(() => result.current.onSort(key2));
     expect(result.current.sortKey).toBe(key2);
@@ -103,15 +105,10 @@ describe('useTableSorting', () => {
     });
     const newData: Sale[] = [
       ...data,
-      {
-        date: '2025-01-04',
-        channel_name: 'D',
-        order_status_id: 2,
-        sum_sales: 60,
-        count_orders: 6,
-      },
+      { date: '2025-01-04', channel_name: 'D', order_status_id: 2, sum_sales: 60, count_orders: 6 },
     ];
     rerender({ d: newData, cols: visibleColumns });
     expect(result.current.sortedData).toBeDefined();
+    expect(result.current.sortedData.length).toBe(newData.length);
   });
 });

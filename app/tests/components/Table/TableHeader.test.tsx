@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { TableHeader } from '~/components/Table/TableHeader';
-import { asc, desc, index as indexKey } from '~/consts';
+import { asc, COLUMNS, desc, index as indexKey } from '~/consts';
 import type { Column, ColumnKey, SortOrder } from '~/types/types';
 
 const columns: Column[] = [
@@ -95,59 +95,53 @@ describe('TableHeader', () => {
     expect(screen.getByText((content) => content.includes('Date'))?.textContent).not.toContain('▼');
   });
 
-  it('calls onSort with correct order on first, second, and third clicks', () => {
+  it('calls onSort correctly on successive clicks', () => {
     const onSortMock = vi.fn();
-
-    const { rerender } = render(
+    const visibleColumns = COLUMNS.map(c => c.key);
+    const { getByText, rerender } = render(
       <table>
         <TableHeader
-          columns={columns}
+          columns={COLUMNS}
           visibleColumns={visibleColumns}
           sortKey={null}
-          sortOrder={asc}
+          sortOrder="asc"
           onSort={onSortMock}
         />
       </table>
     );
 
-    const dateHeader = screen
-      .getByText((content) => content.includes('Date'))
-      .closest('th');
-
-    if (!dateHeader) throw new Error('Date header not found');
+    const dateHeader = getByText('Date');
 
     fireEvent.click(dateHeader);
-    expect(onSortMock).toHaveBeenLastCalledWith('date', asc);
+    expect(onSortMock).toHaveBeenLastCalledWith('date');
 
     rerender(
       <table>
         <TableHeader
-          columns={columns}
+          columns={COLUMNS}
           visibleColumns={visibleColumns}
           sortKey="date"
-          sortOrder={asc}
+          sortOrder="asc"
           onSort={onSortMock}
         />
       </table>
     );
-
     fireEvent.click(dateHeader);
-    expect(onSortMock).toHaveBeenLastCalledWith('date', desc);
+    expect(onSortMock).toHaveBeenLastCalledWith('date');
 
     rerender(
       <table>
         <TableHeader
-          columns={columns}
+          columns={COLUMNS}
           visibleColumns={visibleColumns}
           sortKey="date"
-          sortOrder={desc}
+          sortOrder="desc"
           onSort={onSortMock}
         />
       </table>
     );
-
     fireEvent.click(dateHeader);
-    expect(onSortMock).toHaveBeenLastCalledWith(null);
+    expect(onSortMock).toHaveBeenLastCalledWith('date');
   });
 
   it('does nothing when clicking non-sortable column', () => {

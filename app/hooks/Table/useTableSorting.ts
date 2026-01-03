@@ -10,23 +10,22 @@ export const useTableSorting = (
 ): UseTableSortingResult => {
   const [sortKey, setSortKey] = useState<SortKey>(null);
   const [sortOrder, setSortOrder] = useState<SortOrder>(asc);
-
   const sortedData: SaleArray = useMemo(
     () => sortTableData(data, sortKey, sortOrder, visibleColumns),
     [data, sortKey, sortOrder, visibleColumns],
   );
 
-  const onSort = useCallback((key: SortKey): void => {
-    setSortKey((prevKey) => {
-      if (prevKey === key) {
-        setSortOrder((prev) => (prev === asc ? desc : asc));
-        return prevKey;
-      }
-
+  const onSort = useCallback((key: SortKey) => {
+    if (sortKey !== key) {
+      setSortKey(key);
       setSortOrder(asc);
-      return key;
-    });
-  }, []);
+    } else if (sortOrder === asc) {
+      setSortOrder(desc);
+    } else if (sortOrder === desc) {
+      setSortKey(null);
+      setSortOrder(asc);
+    }
+  }, [sortKey, sortOrder]);
 
   return {
     sortKey,

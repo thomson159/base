@@ -46,8 +46,9 @@ export type UseData = Readonly<{
 }> &
   Metrics;
 
-export type Column = { key: ColumnKey; label: string; sortable?: boolean };
 export type SortKey = keyof Sale | null;
+
+export type Column = { key: ColumnKey; label: string; sortable?: boolean };
 export type ColumnKey = keyof Sale | typeof index;
 export type Fields = { label: string; value: keyof Sale };
 export type MetricKey = 'sum_sales' | 'count_orders';
