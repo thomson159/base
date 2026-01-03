@@ -1,8 +1,8 @@
 import { useRef } from 'react';
-import type { Sale } from '~/types/types';
+import type { SaleArray } from '~/types/types';
 import { normalizeChannelName } from '~/utils/utils';
 
-export const useAvailableChannelNames = (data?: readonly Sale[]): readonly string[] => {
+export const useAvailableChannelNames = (data?: SaleArray): readonly string[] => {
   const firstNamesRef = useRef<readonly string[] | null>(null);
 
   if (!firstNamesRef.current && data?.length) {

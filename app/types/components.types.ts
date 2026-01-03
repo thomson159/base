@@ -1,5 +1,13 @@
 import { type ReactNode } from 'react';
-import type { Column, ColumnKey, Filters, Sale, Sort, SortKey, SortOrder } from '~/types/types';
+import type {
+  Column,
+  ColumnKey,
+  Filters,
+  SaleArray,
+  Sort,
+  SortKey,
+  SortOrder,
+} from '~/types/types';
 import type { UseFiltersStateResult } from './hooks.types';
 
 export type ContainerProps = {
@@ -27,7 +35,21 @@ export interface PaginationProps {
 }
 
 export interface SalesTableProps {
-  readonly data: readonly Sale[];
+  readonly data: SaleArray;
+}
+
+export interface FiltersProps extends Filters {
+  readonly onChange: (value: Filters) => void;
+  readonly data?: SaleArray;
+}
+
+export type FiltersViewProps = UseFiltersStateResult & {
+  readonly availableChannels: readonly string[];
+};
+
+export interface SortProps {
+  sort?: Sort;
+  readonly onChange: (sort?: Sort) => void;
 }
 
 export type VisibleColumns = {
@@ -43,25 +65,11 @@ export type ColumnSelectorProps = Columns & {
 };
 
 export type TableBodyProps = VisibleColumns & {
-  data: readonly Sale[];
+  data: SaleArray;
 };
 
 export type TableHeaderProps = Columns & {
   sortKey: SortKey | null;
   sortOrder: SortOrder | null;
   onSort: (key: SortKey | null, order?: SortOrder) => void;
-};
-
-export interface SortProps {
-  sort?: Sort;
-  onChange: (sort?: Sort) => void;
-}
-
-export interface FiltersProps extends Filters {
-  readonly onChange: (value: Filters) => void;
-  readonly data?: readonly Sale[];
-}
-
-export type FiltersViewProps = UseFiltersStateResult & {
-  readonly availableChannels: readonly string[];
 };

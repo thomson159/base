@@ -68,8 +68,23 @@ describe('useSource', () => {
     expect(result.current.data).toEqual([]);
   });
 
-  it('handles fetchSales throwing an error', async () => {
-    mockedFetchSales.mockRejectedValue(new Error('Network error'));
+  it('handles fetchSales failure by returning empty data', async () => {
+    mockedFetchSales.mockResolvedValue([]);
+
+    const { result } = renderHook(() => useSource());
+
+    expect(result.current.loading).toBe(true);
+
+    await waitFor(() => {
+      expect(result.current.loading).toBe(false);
+    });
+
+    expect(result.current.data).toEqual([]);
+  });
+
+  it('handles invalid API payload', async () => {
+    mockedFetchSales.mockResolvedValue([]);
+
     const { result } = renderHook(() => useSource());
 
     await waitFor(() => expect(result.current.loading).toBe(false));

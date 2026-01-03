@@ -50,7 +50,7 @@ exports[`Filters > matches snapshot 1`] = `
             </div>
           </div>
           <div
-            class="pt-2"
+            class="pt-2 pl-1 pr-1"
           >
             -
           </div>
@@ -90,7 +90,7 @@ exports[`Filters > matches snapshot 1`] = `
         </button>
       </div>
       <button
-        class="px-6 py-2 rounded-lg shadow-md _button_81a49d w-full lg:w-auto "
+        class="px-6 py-2 rounded-lg _button_81a49d w-full lg:w-auto "
       >
         Apply
       </button>

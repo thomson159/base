@@ -52,9 +52,7 @@ export const FiltersView = ({
             placeholderText="dd/mm/yyyy"
             className={`${styles.input} w-full max-w-[112px]`}
           />
-          <div className='pt-2'>
-            -
-          </div>
+          <div className="pt-2 pl-1 pr-1">{'-'}</div>
           <DatePicker
             selected={state.maxDate ? new Date(state.maxDate) : null}
             onChange={(date: Date | null) =>
@@ -79,8 +77,9 @@ export const FiltersView = ({
             <button
               key={name}
               onClick={() => dispatch({ type: 'TOGGLE_CHANNEL', value: name })}
-              className={`${stylesSort.sortButton} ${active ? stylesSort.sortButtonActive : stylesSort.sortButtonInActive
-                }`}
+              className={`${stylesSort.sortButton} ${
+                active ? stylesSort.sortButtonActive : stylesSort.sortButtonInActive
+              }`}
             >
               {name}
               {active && ' ✓'}

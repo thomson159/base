@@ -89,7 +89,12 @@ describe('useData full coverage', () => {
     expect(result.current.loading).toBe(false);
     expect(result.current.page).toBe(1);
     expect(result.current.pageSize).toBe(40);
-    expect(result.current.filters).toEqual({});
+    expect(result.current.filters).toEqual({
+      // channelName: '',
+      // minDate: '2024-09-01',
+      // maxDate: '2024-09-29',
+      // channelNames: [],
+    });
     expect(result.current.sort).toBeUndefined();
     expect(result.current.total).toBe(3);
     expect(result.current.totalPages).toBe(1);
@@ -100,8 +105,20 @@ describe('useData full coverage', () => {
 
   it('setFilters updates correctly', () => {
     const { result } = renderHook(() => useData());
-    act(() => result.current.setFilters({ channelName: 'A' }));
-    expect(result.current.filters).toEqual({ channelName: 'A' });
+    act(() =>
+      result.current.setFilters({
+        channelName: 'A',
+        minDate: '2024-09-01',
+        maxDate: '2024-09-29',
+        channelNames: [],
+      }),
+    );
+    expect(result.current.filters).toEqual({
+      channelName: 'A',
+      minDate: '2024-09-01',
+      maxDate: '2024-09-29',
+      channelNames: [],
+    });
     expect(result.current.data).toEqual([{ ...sampleData[0] }]);
     expect(result.current.page).toBe(1);
     expect(result.current.totalRevenue).toBe(50);
@@ -109,11 +126,20 @@ describe('useData full coverage', () => {
 
   it('multiple filters merge', () => {
     const { result } = renderHook(() => useData());
-    act(() => result.current.setFilters({ channelName: 'A' }));
+    act(() =>
+      result.current.setFilters({
+        channelName: 'A',
+        minDate: '2024-09-01',
+        maxDate: '2024-09-29',
+        channelNames: [],
+      }),
+    );
     act(() => result.current.setFilters({ minDate: '2025-01-01' }));
     expect(result.current.filters).toEqual({
       channelName: 'A',
       minDate: '2025-01-01',
+      maxDate: '2024-09-29',
+      channelNames: [],
     });
   });
 

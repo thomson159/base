@@ -9,8 +9,7 @@ import type {
   FiltersProps,
   SortProps,
 } from '~/types/components.types';
-import type { UseDataResult } from '~/types/hooks.types';
-import type { Sort } from '~/types/types';
+import type { Sort, UseData } from '~/types/types';
 
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
@@ -28,7 +27,7 @@ beforeAll(() => {
   });
 });
 
-const mockUseData: UseDataResult = {
+const mockUseData: UseData = {
   data: [
     {
       date: '2025-01-01',

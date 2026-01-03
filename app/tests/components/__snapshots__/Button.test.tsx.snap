@@ -3,7 +3,7 @@
 exports[`Button > accepts id prop 1`] = `
 <div>
   <button
-    class="px-6 py-2 rounded-lg shadow-md _button_81a49d "
+    class="px-6 py-2 rounded-lg _button_81a49d "
     id="my-button"
   >
     ID Test
@@ -14,7 +14,7 @@ exports[`Button > accepts id prop 1`] = `
 exports[`Button > accepts type prop 1`] = `
 <div>
   <button
-    class="px-6 py-2 rounded-lg shadow-md _button_81a49d "
+    class="px-6 py-2 rounded-lg _button_81a49d "
     type="submit"
   >
     Submit
@@ -25,7 +25,7 @@ exports[`Button > accepts type prop 1`] = `
 exports[`Button > applies additional className 1`] = `
 <div>
   <button
-    class="px-6 py-2 rounded-lg shadow-md _button_81a49d extra-class"
+    class="px-6 py-2 rounded-lg _button_81a49d extra-class"
   >
     Test
   </button>
@@ -35,7 +35,7 @@ exports[`Button > applies additional className 1`] = `
 exports[`Button > handles multiple classNames correctly 1`] = `
 <div>
   <button
-    class="px-6 py-2 rounded-lg shadow-md _button_81a49d first second"
+    class="px-6 py-2 rounded-lg _button_81a49d first second"
   >
     Classes
   </button>
@@ -45,7 +45,7 @@ exports[`Button > handles multiple classNames correctly 1`] = `
 exports[`Button > is disabled when disabled prop is true 1`] = `
 <div>
   <button
-    class="px-6 py-2 rounded-lg shadow-md _button_81a49d "
+    class="px-6 py-2 rounded-lg _button_81a49d "
     disabled=""
   >
     Disabled
@@ -56,7 +56,7 @@ exports[`Button > is disabled when disabled prop is true 1`] = `
 exports[`Button > renders children 1`] = `
 <div>
   <button
-    class="px-6 py-2 rounded-lg shadow-md _button_81a49d "
+    class="px-6 py-2 rounded-lg _button_81a49d "
   >
     Click me
   </button>

@@ -2,12 +2,12 @@ import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { TableBody } from '~/components/Table/TableBody';
 import { index } from '~/consts';
-import type { Sale } from '~/types/types';
+import type { SaleArray } from '~/types/types';
 import * as utils from '~/utils/utils';
 
 const normalizeChannelNameMock = vi.spyOn(utils, 'normalizeChannelName');
 
-const data: readonly Sale[] = [
+const data: SaleArray = [
   {
     date: '2025-01-01',
     channel_name: 'chan1',

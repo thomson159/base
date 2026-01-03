@@ -1,20 +1,25 @@
 import { useCallback, useState } from 'react';
-import type { Filters, Metrics, Sale, Sort } from '~/types/types';
+import type { Filters, Metrics, SaleArray, Sort, UseData } from '~/types/types';
 import { useSource } from './useSource';
 import { useFilters } from './useFilters';
 import { useMetrics } from './useMetrics';
 import { usePagination } from './usePagination';
 import { useSort } from './useSort';
-import type { UseDataResult, UseSourceResult, UsePaginationResult } from '~/types/hooks.types';
+import type { UseSourceResult, UsePaginationResult } from '~/types/hooks.types';
 
-export const useData = (): UseDataResult => {
+export const useData = (): UseData => {
   const { data, loading }: UseSourceResult = useSource();
-  const [filters, setFiltersState] = useState<Filters>({});
+  const [filters, setFiltersState] = useState<Filters>({
+    // channelName: '',
+    // minDate: '2024-09-01',
+    // maxDate: '2024-09-29',
+    // channelNames: [],
+  });
   const [sort, setSortState] = useState<Sort | undefined>(undefined);
   const [page, setPageState] = useState<number>(1);
   const [pageSize, setPageSizeState] = useState<number>(40);
-  const filteredData: readonly Sale[] = useFilters(data, filters);
-  const sortedData: readonly Sale[] = useSort(filteredData, sort);
+  const filteredData: SaleArray = useFilters(data, filters);
+  const sortedData: SaleArray = useSort(filteredData, sort);
   const metrics: Metrics = useMetrics(sortedData);
   const { pagedData, total, totalPages }: UsePaginationResult = usePagination(
     sortedData,
@@ -27,12 +32,10 @@ export const useData = (): UseDataResult => {
     setPageSizeState(s);
     setPageState(1);
   }, []);
-
   const setSort = useCallback((next?: Sort) => {
     setSortState(next);
     setPageState(1);
   }, []);
-
   const setFilters = useCallback((next: Partial<Filters>) => {
     setFiltersState((prev) => ({ ...prev, ...next }));
     setPageState(1);

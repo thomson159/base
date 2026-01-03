@@ -1,12 +1,17 @@
-import type { Sale, Metrics } from '~/types/types';
+import type { Metrics, SaleArray } from '~/types/types';
 
-export const calculateMetrics = (data: readonly Sale[]): Metrics => {
-  const totalRevenue: number = data.reduce((sum, s) => sum + s.sum_sales, 0);
-  const totalOrders: number = data.reduce((sum, s) => sum + s.count_orders, 0);
+export const calculateMetrics = (data: SaleArray): Metrics => {
+  let totalRevenue = 0;
+  let totalOrders = 0;
+
+  for (const s of data) {
+    totalRevenue += s.sum_sales;
+    totalOrders += s.count_orders;
+  }
 
   return {
     totalRevenue,
     totalOrders,
-    avgOrderValue: totalOrders !== 0 ? totalRevenue / totalOrders : 0,
+    avgOrderValue: totalOrders ? totalRevenue / totalOrders : 0,
   };
 };

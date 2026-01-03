@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { applyFilters } from '~/utils/filters.utils';
-import type { Sale, Filters } from '~/types/types';
+import type { Filters, SaleArray } from '~/types/types';
 
-export const useFilters = (data: readonly Sale[], filters: Filters): readonly Sale[] =>
-  useMemo<readonly Sale[]>(() => applyFilters(data, filters), [data, filters]);
+export const useFilters = (data: SaleArray, filters: Filters): SaleArray =>
+  useMemo(() => applyFilters(data, filters), [data, filters]);

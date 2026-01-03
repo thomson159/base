@@ -91,7 +91,7 @@ exports[`Table > matches snapshot 1`] = `
       class="flex pt-5"
     >
       <button
-        class="px-6 py-2 rounded-lg shadow-md _button_81a49d mx-auto"
+        class="px-6 py-2 rounded-lg _button_81a49d mx-auto"
       >
         More
       </button>

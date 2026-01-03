@@ -1,12 +1,12 @@
-import type { ColumnKey, Sale, SortKey, SortOrder } from '~/types/types';
+import type { ColumnKey, Sale, SaleArray, SortKey, SortOrder } from '~/types/types';
 import { asc } from '~/consts';
 
 export const sortTableData = (
-  data: readonly Sale[],
+  data: SaleArray,
   sortKey: SortKey,
   sortOrder: SortOrder,
   visibleColumns: ColumnKey[],
-): readonly Sale[] => {
+): SaleArray => {
   if (!sortKey || !visibleColumns.includes(sortKey)) {
     return data;
   }

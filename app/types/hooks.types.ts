@@ -1,40 +1,35 @@
 import type { ChangeEvent } from 'react';
 import type { VisibleColumns } from './components.types';
-import type { State, Action } from './state.types';
-import type { Sale, SortKey, SortOrder, ColumnKey, Sort, UseData } from './types';
+import type { Action, State } from './state.types';
+import type { SortKey, SortOrder, ColumnKey, SaleArray } from './types';
 
-export type UseDataResult = UseData & {
-  sort?: Sort;
-  setSort: (sort?: Sort) => void;
-};
+export type UseSourceResult = Readonly<{
+  data: SaleArray;
+  loading: boolean;
+}>;
+
+export type UsePaginationResult = Readonly<{
+  pagedData: SaleArray;
+  total: number;
+  totalPages: number;
+}>;
+
+export type UseFiltersStateResult = Readonly<{
+  state: State;
+  hasChanges: boolean;
+  apply: () => void;
+  dispatch: React.Dispatch<Action>;
+}>;
 
 export type UseTableSortingResult = {
   sortKey: SortKey;
   sortOrder: SortOrder;
-  sortedData: readonly Sale[];
+  sortedData: SaleArray;
   onSort: (key: SortKey) => void;
 };
 
 export type UseTableColumnsResult = VisibleColumns & {
   toggleColumn: (key: ColumnKey) => void;
-};
-
-export interface UsePaginationResult {
-  readonly pagedData: readonly Sale[];
-  readonly total: number;
-  readonly totalPages: number;
-}
-
-export interface UseSourceResult {
-  readonly data: readonly Sale[];
-  loading: boolean;
-}
-
-export type UseFiltersStateResult = {
-  readonly state: State;
-  readonly hasChanges: boolean;
-  readonly apply: () => void;
-  readonly dispatch: React.Dispatch<Action>;
 };
 
 export type UsePageSizeResult = {

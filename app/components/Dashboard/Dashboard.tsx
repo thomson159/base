@@ -7,13 +7,12 @@ import { Pagination } from '../Pagination/Pagination';
 import { PageSizeFilter } from '../Filters/PageSizeFilter';
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
 import { Container } from './Container';
-import type { UseDataResult } from '~/types/hooks.types';
 import './Dashboard.scss';
 import Filters from '../Filters/Filters';
 import { Summary } from '../Summary/Summary';
 import Sort from '../Sort/Sort';
 import Table from '../Table/Table';
-import type { Filters as FiltersType, Metrics, Sort as SortType } from '~/types/types';
+import type { Filters as FiltersType, Metrics, Sort as SortType, UseData } from '~/types/types';
 
 export const Dashboard = () => {
   const {
@@ -33,7 +32,7 @@ export const Dashboard = () => {
     totalRevenue,
     totalOrders,
     avgOrderValue,
-  }: UseDataResult = useData();
+  }: UseData = useData();
 
   const [filtersVisible, setFiltersVisible] = useState<boolean>(true);
   const toggleFilters = useCallback(() => setFiltersVisible((prev) => !prev), []);

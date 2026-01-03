@@ -1,5 +1,5 @@
 
-import type { Sale } from "~/types/types";
+import type { Sale, SaleArray } from "~/types/types";
 import { normalizeChannelName } from "../app/utils/utils";
 
 export type SalesOverTimeItem = {
@@ -12,7 +12,7 @@ export type RevenuePerChannelItem = {
   revenue: number;
 };
 
-export const getSalesOverTime = (data: readonly Sale[]): SalesOverTimeItem[] => {
+export const getSalesOverTime = (data: SaleArray): SalesOverTimeItem[] => {
   const salesMap: Record<string, number> = data.reduce(
     (acc: Record<string, number>, sale: Sale) => {
       if (!sale.date) return acc;
@@ -37,7 +37,7 @@ export const getSalesOverTime = (data: readonly Sale[]): SalesOverTimeItem[] => 
 };
 
 export const getRevenuePerChannel = (
-  data: readonly Sale[]
+  data: SaleArray
 ): RevenuePerChannelItem[] => {
   const channelsMap: Record<string, number> = {};
 

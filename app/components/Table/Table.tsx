@@ -1,6 +1,6 @@
 import './Table.scss';
 import { useState, useMemo, useCallback, memo } from 'react';
-import type { Sale } from '~/types/types';
+import type { SaleArray } from '~/types/types';
 import { ColumnSelector } from './ColumnSelector';
 import { Button } from '../Button/Button';
 import { COLUMNS, ROWS_INCREMENT } from '~/consts';
@@ -15,7 +15,7 @@ const SalesTableComponent = ({ data }: SalesTableProps) => {
   const { sortKey, sortOrder, sortedData, onSort } = useTableSorting(data, visibleColumns);
   const [visibleRowsCount, setVisibleRowsCount] = useState<number>(ROWS_INCREMENT);
 
-  const displayedData = useMemo<readonly Sale[]>(
+  const displayedData = useMemo<SaleArray>(
     () => sortedData.slice(0, visibleRowsCount),
     [sortedData, visibleRowsCount],
   );

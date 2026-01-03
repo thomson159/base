@@ -6,7 +6,12 @@ import type { BarOption, LineOption } from '~/types/types';
 import type { BarData, DashboardChartsProps, LineSeries } from '../../types/charts.types';
 import { BLUE, BAR_OPTIONS, LINE_OPTIONS, BAR_COMMON_PROPS, LINE_COMMON_PROPS } from '~/consts';
 import { BarTooltip, LineTooltip } from './Tooltip';
-import { aggregateLineData, aggregateBarData, buildChannelColorMap, buildLineTicks } from '~/utils/charts.utils';
+import {
+  aggregateLineData,
+  aggregateBarData,
+  buildChannelColorMap,
+  buildLineTicks,
+} from '~/utils/charts.utils';
 
 const ChartsComponent = ({ salesData }: DashboardChartsProps) => {
   const isMobile = useIsMobile();
@@ -14,38 +19,38 @@ const ChartsComponent = ({ salesData }: DashboardChartsProps) => {
   const [barOption, setBarOption] = useState<BarOption>(BAR_OPTIONS[0]);
 
   const toggleLineOption = () =>
-    setLineOption(prev => (prev.id === LINE_OPTIONS[0].id ? LINE_OPTIONS[1] : LINE_OPTIONS[0]));
+    setLineOption((prev) => (prev.id === LINE_OPTIONS[0].id ? LINE_OPTIONS[1] : LINE_OPTIONS[0]));
 
   const toggleBarOption = () =>
-    setBarOption(prev => (prev.label === BAR_OPTIONS[0].label ? BAR_OPTIONS[1] : BAR_OPTIONS[0]));
+    setBarOption((prev) => (prev.label === BAR_OPTIONS[0].label ? BAR_OPTIONS[1] : BAR_OPTIONS[0]));
 
   const aggregatedLineData: LineSeries[] = useMemo(
     () => aggregateLineData(salesData, lineOption.key, lineOption.id),
-    [salesData, lineOption]
+    [salesData, lineOption],
   );
 
   const aggregatedBarData: BarData[] = useMemo(
     () => aggregateBarData(salesData, barOption.key, barOption.label),
-    [salesData, barOption]
+    [salesData, barOption],
   );
 
   if (!salesData.length) return null;
 
   const sanitizedLineData = useMemo(
     () =>
-      aggregatedLineData.map(series => ({
+      aggregatedLineData.map((series) => ({
         ...series,
-        data: series.data.map(point => ({
+        data: series.data.map((point) => ({
           x: point.x,
           y: isNaN(point.y) || point.y === null ? 0 : point.y,
         })),
       })),
-    [aggregatedLineData]
+    [aggregatedLineData],
   );
 
   const sanitizedBarData = useMemo(
     () =>
-      aggregatedBarData.map(item => {
+      aggregatedBarData.map((item) => {
         const key = barOption.label as keyof BarData;
         const value = item[key];
         return {
@@ -54,12 +59,12 @@ const ChartsComponent = ({ salesData }: DashboardChartsProps) => {
           channel: item.channel ?? 'Unknown',
         };
       }),
-    [aggregatedBarData, barOption]
+    [aggregatedBarData, barOption],
   );
 
   const channelColorMap: Record<string, string> = useMemo(
     () => buildChannelColorMap(sanitizedBarData),
-    [sanitizedBarData]
+    [sanitizedBarData],
   );
 
   const lineTicks = useMemo(() => {
@@ -77,7 +82,7 @@ const ChartsComponent = ({ salesData }: DashboardChartsProps) => {
         tooltip={LineTooltip}
       />
     ),
-    [sanitizedLineData, lineTicks]
+    [sanitizedLineData, lineTicks],
   );
 
   const MemoizedBar = useMemo(
@@ -87,14 +92,12 @@ const ChartsComponent = ({ salesData }: DashboardChartsProps) => {
         data={sanitizedBarData}
         keys={[barOption.label as keyof BarData]}
         indexBy="channel"
-        colors={({ indexValue }: { indexValue: string }) =>
-          channelColorMap[indexValue] ?? '#000'
-        }
+        colors={({ indexValue }: { indexValue: string }) => channelColorMap[indexValue] ?? '#000'}
         axisBottom={isMobile ? null : undefined}
         tooltip={BarTooltip}
       />
     ),
-    [sanitizedBarData, barOption, isMobile, channelColorMap]
+    [sanitizedBarData, barOption, isMobile, channelColorMap],
   );
 
   return (

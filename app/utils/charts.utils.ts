@@ -1,10 +1,10 @@
 import type { BarData, LineSeries, LineDataPoint } from '~/types/charts.types';
-import type { Sale, MetricKey } from '~/types/types';
+import type { MetricKey, SaleArray } from '~/types/types';
 import { normalizeChannelName } from './utils';
 import { COLORS } from '~/consts';
 
 export const buildLineData = (
-  salesData: readonly Sale[],
+  salesData: SaleArray,
   metric: MetricKey,
   id: string,
 ): LineSeries[] => {
@@ -26,7 +26,7 @@ export const buildLineData = (
 };
 
 export const buildBarData = (
-  salesData: readonly Sale[],
+  salesData: SaleArray,
   metric: MetricKey,
   label: string,
 ): readonly BarData[] => {
@@ -46,7 +46,7 @@ export const buildBarData = (
 };
 
 export const aggregateLineData = (
-  salesData: readonly Sale[],
+  salesData: SaleArray,
   key: MetricKey,
   id: string,
 ): LineSeries[] => {
@@ -69,7 +69,7 @@ export const aggregateLineData = (
 };
 
 export const aggregateBarData = (
-  salesData: readonly Sale[],
+  salesData: SaleArray,
   key: MetricKey,
   label: string,
 ): BarData[] => {
@@ -89,19 +89,14 @@ export const aggregateBarData = (
     .sort((a, b) => Number(b[label]) - Number(a[label]));
 };
 
-export const buildChannelColorMap = (
-  barData: readonly BarData[],
-): Record<string, string> => {
+export const buildChannelColorMap = (barData: readonly BarData[]): Record<string, string> => {
   return barData.reduce<Record<string, string>>((acc, item, index) => {
     acc[item.channel] = COLORS[index % COLORS.length];
     return acc;
   }, {});
 };
 
-export const buildLineTicks = (
-  data: LineSeries[],
-  isMobile: boolean,
-): readonly string[] => {
+export const buildLineTicks = (data: LineSeries[], isMobile: boolean): readonly string[] => {
   const points: readonly LineDataPoint[] = data[0]?.data ?? [];
   if (!points.length) return [];
 

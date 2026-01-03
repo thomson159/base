@@ -71,22 +71,15 @@ describe('useFiltersState', () => {
       }),
     );
 
-    vi.spyOn(FiltersState, 'toFiltersValue').mockReturnValue({
-      channelName: 'A',
-      minDate: '',
-      maxDate: '',
-      channelNames: [],
-    });
-
     act(() => {
       result.current.apply();
     });
 
     expect(onChange).toHaveBeenCalledWith({
       channelName: 'A',
-      minDate: '',
-      maxDate: '',
-      channelNames: [],
+      minDate: undefined,
+      maxDate: undefined,
+      channelNames: undefined,
     });
   });
 

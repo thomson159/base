@@ -1,5 +1,5 @@
 import "./SalesChart.scss";
-import type { Sale } from "~/types/types";
+import type { SaleArray } from "~/types/types";
 import { SalesOverTimeChart } from "./SalesOverTimeChart";
 import { RevenuePerChannelChart } from "./RevenuePerChannelChart";
 import { ChannelLegend } from "./ChannelLegend";
@@ -7,7 +7,7 @@ import { useIsMobile } from "~/hooks/useIsMobile";
 import { getRevenuePerChannel, getSalesOverTime } from "old/salesChart.utils";
 
 type Props = {
-  data: readonly Sale[];
+  data: SaleArray;
 };
 
 export const SalesChart = ({ data }: Props) => {

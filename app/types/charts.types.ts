@@ -1,4 +1,4 @@
-import type { Sale } from '~/types/types';
+import type { SaleArray } from '~/types/types';
 
 export interface LineDataPoint {
   readonly x: string;
@@ -16,7 +16,7 @@ export interface BarData {
 }
 
 export interface DashboardChartsProps {
-  readonly salesData: readonly Sale[];
+  readonly salesData: SaleArray;
 }
 
 export interface LineTooltipPoint {
