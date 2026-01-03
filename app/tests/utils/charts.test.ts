@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest';
 import { buildLineData, buildBarData } from '~/utils/charts.utils';
 import type { Sale } from '~/types/types';
 import type { LineSeries, BarData } from '~/types/charts.types';
-import { normalizeChannelName } from '~/utils/utils';
 
 describe('buildLineData', () => {
   it('aggregates sales data by date', () => {
@@ -156,22 +155,5 @@ describe('buildBarData', () => {
   it('returns empty array when salesData is empty', () => {
     const result: readonly BarData[] = buildBarData([], 'sum_sales', 'Revenue');
     expect(result).toEqual([]);
-  });
-});
-
-describe('normalizeChannelName', () => {
-  it('returns mapped name for known channels', () => {
-    expect(normalizeChannelName('[allegro-pl]')).toBe('Allegro');
-    expect(normalizeChannelName('[shoper_rest]')).toBe('Shoper');
-  });
-
-  it('returns original value for unknown channels', () => {
-    expect(normalizeChannelName('facebook_ads')).toBe('facebook_ads');
-    expect(normalizeChannelName('SomeChannel')).toBe('SomeChannel');
-  });
-
-  it('is case-insensitive', () => {
-    expect(normalizeChannelName('[ALLEGRO-PL]')).toBe('Allegro');
-    expect(normalizeChannelName('[Shoper_Rest]')).toBe('Shoper');
   });
 });

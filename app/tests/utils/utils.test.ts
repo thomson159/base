@@ -18,6 +18,21 @@ describe('normalizeChannelName', () => {
     const result = normalizeChannelName('');
     expect(result).toBe('');
   });
+
+  it('returns mapped name for known channels', () => {
+    expect(normalizeChannelName('[allegro-pl]')).toBe('Allegro');
+    expect(normalizeChannelName('[shoper_rest]')).toBe('Shoper');
+  });
+
+  it('returns original value for unknown channels', () => {
+    expect(normalizeChannelName('facebook_ads')).toBe('facebook_ads');
+    expect(normalizeChannelName('SomeChannel')).toBe('SomeChannel');
+  });
+
+  it('is case-insensitive', () => {
+    expect(normalizeChannelName('[ALLEGRO-PL]')).toBe('Allegro');
+    expect(normalizeChannelName('[Shoper_Rest]')).toBe('Shoper');
+  });
 });
 
 describe('areNumbers', () => {
